@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript Input Validation</h1>
+    <h3>(with Regex)</h3>
+    <p>Please input a number between 10 and 50</p>
+    <input id="demo" type="text" maxlength="2">
+    <button type="button" onclick="myFunction()">View Test</button>
+    <p id="par1"></p>
+  </div>
+  
+<script>
+    function myFunction() {
+        const input = document.getElementById('demo').value;
+        const output = document.getElementById('par1');
+
+        try {
+            const regex = /^([1-4][0-9]|50|10)$/; 
+
+            if (!regex.test(input)) {
+                throw new Error("invalid input");
+            }
+
+            output.innerHTML = `Valid!`;
+            output.style.color = 'green';
+        } catch (error) {
+            if (error.message === "invalid input") {
+                output.innerHTML = "Please enter a number between 10 and 50.";
+            } else {
+                output.innerHTML = "An unexpected error occurred.";
+            }
+            output.style.color = 'red';
+        } 
+    }
+</script>
+
+</body>
+</html>
